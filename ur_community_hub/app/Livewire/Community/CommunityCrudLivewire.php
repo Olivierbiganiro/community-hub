@@ -65,7 +65,7 @@ class CommunityCrudLivewire extends Component
             'community_name' => 'required|string|max:255',
             'email' => 'required|email|unique:community_profiles,email',
             'phone' => 'nullable|string|max:20',
-            'profile_image' => 'nullable|image|max:1024',
+            'profile_image' => 'required|image',
             'bio' => 'nullable|string',
             'description' => 'nullable|string',
             'location' => 'nullable|string|max:255',
@@ -74,7 +74,6 @@ class CommunityCrudLivewire extends Component
             'instagram_links' => 'nullable|url',
             'twitter_links' => 'nullable|url',
         ]);
-
         $imagePath = $this->profile_image ? $this->profile_image->store('community_profiles', 'public') : null;
         $fullImageUrl = $imagePath ? asset('storage/' . $imagePath) : null;
 
@@ -175,6 +174,7 @@ class CommunityCrudLivewire extends Component
             'leader_profile_image' => 'required|image',
             'leader_bio' => 'nullable|string',
         ]);
+        
 
         $imagePath = $this->leader_profile_image ? $this->leader_profile_image->store('community_leaders', 'public') : null;
         $fullImageUrl = $imagePath ? asset('storage/' . $imagePath) : null;

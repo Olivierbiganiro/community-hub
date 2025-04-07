@@ -51,7 +51,7 @@ class EventCrudLivewire extends Component
             'title' => $this->title,
             'slug' => Str::slug($this->title),
             'description' => $this->description,
-            'event_date' => $formattedEventDate,
+            'event_date' => $this->event_date,
             'location' => $this->location,
             'image' => $fullImageUrl,
         ]);
@@ -91,7 +91,7 @@ class EventCrudLivewire extends Component
             'title' => $this->title,
             'slug' => Str::slug($this->title),
             'description' => $this->description,
-            'event_date' => $formattedEventDate,
+            'event_date' => $this->event_date,
             'location' => $this->location,
             'image' => $fullImageUrl ?? $event->image,
         ]);

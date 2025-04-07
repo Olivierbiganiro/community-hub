@@ -42,18 +42,7 @@
                 @forelse ($communities as $community)
                     <div
                         class="relative overflow-hidden transition-all duration-300 bg-white shadow-md group rounded-xl hover:-translate-y-1 hover:shadow-xl">
-                        <div
-                            class="absolute z-10 flex space-x-1 transition-opacity duration-300 opacity-100 right-3 top-3 group-hover:opacity-100">
-                            <button wire:click="edit({{ $community->id }})" data-modal-target="edit-community-modal"
-                                data-modal-toggle="edit-community-modal"
-                                class="p-2 text-blue-600 bg-white rounded-full shadow-md hover:bg-blue-600 hover:text-white">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button wire:click="delete({{ $community->id }})"
-                                class="p-2 text-red-600 bg-white rounded-full shadow-md hover:bg-red-600 hover:text-white">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
+
                         <div class="relative pb-48 overflow-hidden">
                             <img class="absolute inset-0 object-cover object-center w-full h-full transition-transform duration-300 group-hover:scale-105"
                                 src="{{ $community->profile_image }}" alt="{{ $community->community_name }}"
@@ -113,6 +102,18 @@
                                     </a>
                                 @endif
                             </div>
+
+                            <div class="flex gap-3 mt-6">
+                            <button wire:click="edit({{ $community->id }})" data-modal-target="edit-community-modal"
+                                data-modal-toggle="edit-community-modal"
+                                class="p-2 text-blue-600">
+                                <i class="fas fa-edit"></i>Edit
+                            </button>
+                            <button wire:click="delete({{ $community->id }})"
+                                class="p-2 text-red-600">
+                                <i class="fas fa-trash-alt"></i>Delete
+                            </button>
+                        </div>
                         </div>
                     </div>
                 @empty
@@ -146,18 +147,6 @@
                         <div
                             class="overflow-hidden transition-all duration-300 bg-white shadow-md group rounded-xl hover:-translate-y-1 hover:shadow-xl">
                             <div class="p-6 ">
-                                <div class="flex gap-5 py-4 transition-opacity ">
-                                    <button wire:click="editLeader({{ $leader->id }})"
-                                        data-modal-target="edit-leader-modal" data-modal-toggle="edit-leader-modal"
-                                        class="p-2 text-blue-600 bg-gray-100 rounded-full shadow-sm hover:bg-blue-600 hover:text-white">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button wire:click="deleteLeader({{ $leader->id }})"
-                                        class="p-2 text-red-600 bg-gray-100 rounded-full shadow-sm hover:bg-red-600 hover:text-white">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </div>
-
                                 <div class="flex flex-col pt-2 sm:flex-row sm:items-start sm:space-x-4">
                                     <div class="flex-shrink-0">
                                         <div class="mb-4 h-28 w-38 sm:mb-0">
@@ -194,6 +183,18 @@
                                             </div>
                                         @endif
                                     </div>
+                                </div>
+
+                                <div class="flex gap-5 py-4">
+                                    <button wire:click="editLeader({{ $leader->id }})"
+                                        data-modal-target="edit-leader-modal" data-modal-toggle="edit-leader-modal"
+                                        class="p-2 text-blue-600 bg-gray-100 rounded shadow-sm hover:bg-blue-600 ">
+                                        <i class="fas fa-edit"></i>Edit
+                                    </button>
+                                    <button wire:click="deleteLeader({{ $leader->id }})"
+                                        class="p-2 text-red-600 bg-gray-100 rounded shadow-sm hover:bg-red-600 ">
+                                        <i class="fas fa-trash-alt"></i>Delete
+                                    </button>
                                 </div>
                             </div>
                         </div>

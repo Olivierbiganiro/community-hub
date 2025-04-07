@@ -8,7 +8,7 @@
                 <p class="section-subtitle">Stay updated with our latest community events</p>
             </div>
         </div>
-        <div class="row py-3">
+        <div class="py-3 row">
             @forelse($events as $event)
                 <div class="mb-4 col-md-6 col-lg-4">
                     <div class="rounded shadow event-card">
@@ -23,7 +23,7 @@
                                 <a href="{{ route('events.show', $event->id) }}">{{ $event->title }}</a>
                             </h3>
                             <p class="event-date">
-                                <i class="fa fa-calendar"></i> {{ date('F j, Y', strtotime($event->event_date)) }}
+                                <i class="fa fa-calendar"></i>{{ \Carbon\Carbon::parse($event->event_date)->format('M d, Y h:i A') }}
                             </p>
                             <p class="event-location">
                                 <i class="fa fa-map-marker-alt"></i> {{ $event->location }}
@@ -37,8 +37,8 @@
                                 <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary btn-sm">
                                     <i class="fa fa-eye"></i> View Details
                                 </a>
-                                <a href="#" class="btn btn-outline-success btn-sm">
-                                    <i class="fa fa-share"></i> Share
+                                <a href="javascript:void(0)" class="btn btn-outline-success btn-sm" onclick="copyEventLink('{{ route('events.show', $event->id) }}')">
+                                    <i class="fa fa-share"></i> Copy Link
                                 </a>
                             </div>
                         </div>
@@ -108,4 +108,18 @@
         margin-bottom: 20px;
     }
 </style>
+
+<script>
+    function copyEventLink(url) {
+        var tempInput = document.createElement('input');
+        tempInput.value = url;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        tempInput.setSelectionRange(0, 99999);
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        alert('Event link copied to clipboard!');
+    }
+</script>
+
 @endsection

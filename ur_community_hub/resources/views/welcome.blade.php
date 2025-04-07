@@ -19,16 +19,18 @@
             </div>
         </div>
 
+        @php
+        $communities = App\Models\CommunityProfile::where('status', 1)->withCount('events')->get();
+        $communitiesNumber = App\Models\CommunityProfile::where('status', 1)->count();
+        @endphp
 
         <div class="container my-5" id="community">
-            <h2 class="mb-4 text-center">Available Communities</h2>
+            <h2 class="mb-4 text-center">Available Communities <strong>({{$communitiesNumber}})</strong></h2>
 
             <!-- Swiper Wrapper -->
             <div class="swiper mySwiper ">
                 <div class="swiper-wrapper pb-5">
-                    @php
-                        $communities = App\Models\CommunityProfile::where('status', 1)->withCount('events')->get();
-                    @endphp
+                   
 
                     @foreach ($communities as $community)
                         <div class="swiper-slide">
@@ -91,12 +93,16 @@
 
 
         <!-- Community Event Section -->
+        @php
+                    $events = \App\Models\Event::latest()->take(4)->get();
+                    $eventsCount = \App\Models\Event::count();
+                @endphp
         <div class="section function" id="community-events">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-8 col-lg-8">
                         <div class="section-heading-wrapper">
-                            <h2 class="mb-2">Community Events</h2>
+                            <h2 class="mb-2">Community Events <strong>({{$eventsCount}})</strong></h2>
                             <h2 class="mb-3 section-main-heading">Latest Events from Your Community</h2>
                             <p>Explore events organized by your community and get involved.</p>
                         </div>
@@ -108,9 +114,7 @@
             </div>
 
             <div class="container">
-                @php
-                    $events = \App\Models\Event::latest()->take(4)->get();
-                @endphp
+                
                 @if ($events->isEmpty())
                     <p class="text-center text-gray-500">No upcoming events in your community.</p>
                 @else
@@ -133,7 +137,7 @@
                                             <h3>{{ $event->title }}</h3>
                                             <p>{{ $event->description }}</p>
                                             <p><strong>Date:</strong>
-                                                {{ \Carbon\Carbon::parse($event->event_date)->format('M d, Y') }}</p>
+                                                {{ \Carbon\Carbon::parse($event->event_date)->format('M d, Y h:i A') }}</p>
                                             <p><strong>Location:</strong> {{ $event->location }}</p>
                                             <p><strong>Community:</strong> {{ $community->community_name ?? 'N/A' }}</p>
                                             <p><strong>Slug:</strong> {{ $event->slug }}</p>
@@ -149,7 +153,7 @@
                                             <h3>{{ $event->title }}</h3>
                                             <p>{{ $event->description }}</p>
                                             <p><strong>Date:</strong>
-                                                {{ \Carbon\Carbon::parse($event->event_date)->format('M d, Y') }}</p>
+                                                {{ \Carbon\Carbon::parse($event->event_date)->format('M d, Y h:i A') }}</p>
                                             <p><strong>Location:</strong> {{ $event->location }}</p>
                                             <p><strong>Community:</strong> {{ $community->community_name ?? 'N/A' }}</p>
                                             <p><strong>Slug:</strong> {{ $event->slug }}</p>

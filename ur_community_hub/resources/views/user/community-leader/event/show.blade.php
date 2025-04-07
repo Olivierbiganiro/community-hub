@@ -19,7 +19,7 @@
                         <h1>{{ $event->title }}</h1>
                         <p>{{ $event->description }}</p>
                         <ul>
-                            <li><p><strong>Date:</strong> {{ date('F j, Y', strtotime($event->event_date)) }}</p></li>
+                            <li><p><strong>Date:</strong>{{ \Carbon\Carbon::parse($event->event_date)->format('M d, Y h:i A') }}</p></li>
                             <li><p><strong>Location:</strong> {{ $event->location }}</p></li>
                             <li>
                                 <p><strong>Community:</strong>
