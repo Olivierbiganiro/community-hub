@@ -23,7 +23,7 @@
                         <div class="top-header-right">
                             <!-- Clickable Phone Number -->
                             <a href="{{ route('home') }}" class="top-header-contact">
-                                <i class="fa fa-home"></i>UR Community Hub
+                                <i class="fa fa-home"></i> UR Community Hub
                             </a>
 
                             <!-- Clickable Email Address -->
@@ -66,7 +66,7 @@
                             <a class="nav-link" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}#community">Community</a>
+                            <a class="nav-link" href="{{ route('home') }}#community">Associations or Clubs</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}#community-events">Event</a>

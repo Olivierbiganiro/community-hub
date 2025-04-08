@@ -25,7 +25,7 @@
         @endphp
 
         <div class="container my-5" id="community">
-            <h2 class="mb-4 text-center">Available Communities <strong>({{$communitiesNumber}})</strong></h2>
+            <h2 class="mb-4 text-center">Available Associations and Clubs <strong>({{$communitiesNumber}})</strong></h2>
 
             <!-- Swiper Wrapper -->
             <div class="swiper mySwiper ">
@@ -102,9 +102,9 @@
                 <div class="row">
                     <div class="col-12 col-md-8 col-lg-8">
                         <div class="section-heading-wrapper">
-                            <h2 class="mb-2">Community Events <strong>({{$eventsCount}})</strong></h2>
-                            <h2 class="mb-3 section-main-heading">Latest Events from Your Community</h2>
-                            <p>Explore events organized by your community and get involved.</p>
+                            <h2 class="mb-2">Associations/Clubs Events <strong>({{$eventsCount}})</strong></h2>
+                            <h2 class="mb-3 section-main-heading">Latest Events from Your Association or Club</h2>
+                            <p>Explore events organized by your Association or Club and get involved.</p>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
             <div class="container">
                 
                 @if ($events->isEmpty())
-                    <p class="text-center text-gray-500">No upcoming events in your community.</p>
+                    <p class="text-center text-gray-500">No upcoming events in your Association or Club.</p>
                 @else
                     @foreach ($events as $index => $event)
                         <div class="about-timeline-item">

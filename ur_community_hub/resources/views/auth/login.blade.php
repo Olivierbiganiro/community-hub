@@ -15,6 +15,7 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div>
+                <h1 style="color:rgb(7, 127, 175); font-family:'Times New Roman', Times, serif; font-size:200%"><b>Admin Login</b></h1>
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>

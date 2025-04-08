@@ -5,7 +5,7 @@
         <div class="mb-4 row">
             <div class="text-center col-12">
                 <h1 class="section-title">Upcoming Events</h1>
-                <p class="section-subtitle">Stay updated with our latest community events</p>
+                <p class="section-subtitle">Stay updated with our latest Associations or Clubs events</p>
             </div>
         </div>
         <div class="py-3 row">
