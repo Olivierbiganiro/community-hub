@@ -15,7 +15,7 @@ class EventController extends Controller
 
     public function list()
     {
-        $events = Event::with('community')->latest()->paginate(6);
+        $events = Event::with('community')->latest()->get();
         return view('user.community-leader.event.list', compact('events'));
     }
 

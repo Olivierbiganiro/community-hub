@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="p-4 bg-gray-100 rounded-md shadow-sm page-breadcrumb">
+    <div class="p-4 bg-gray-100 rounded-md shadow-sm page-breadcrumb bg-blue-500">
         <div class="flex items-center justify-between">
             <h3 class="text-lg font-semibold text-gray-700">
                 <i class="fa fa-tachometer"></i> WELCOME {{ Auth::user()->name }} Dashboard
@@ -27,7 +27,10 @@
         </div>
 
         @php
-            $recentEvents = \App\Models\Event::latest()->limit(5)->get();
+            $recentEvents = \App\Models\Event::with('community')->latest()->limit(6)->get();
+
+            // dd($recentEvents)
+
         @endphp
         @if ($recentEvents->isNotEmpty())
             <!-- Recent Events Table -->
@@ -36,6 +39,7 @@
                 <table class="w-full border border-collapse border-gray-300">
                     <thead>
                         <tr class="bg-gray-200">
+                            <th class="p-2 border">Association</th>
                             <th class="p-2 border">Title</th>
                             <th class="p-2 border">Date</th>
                             <th class="p-2 border">Location</th>
@@ -46,6 +50,7 @@
 
                         @foreach ($recentEvents as $event)
                             <tr class="border">
+                                <td class="p-2">{{ $event->community->community_name ?? '' }}</td>
                                 <td class="p-2">{{ $event->title }}</td>
                                 <td class="p-2">{{ $event->event_date }}</td>
                                 <td class="p-2">{{ $event->location }}</td>
